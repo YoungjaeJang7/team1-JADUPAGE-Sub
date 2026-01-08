@@ -1,3 +1,5 @@
+const BASE_PATH = "/team1-JADUPAGE-Sub/web";
+
 // 로그인 관련 공통 (토큰 저장 위치 LocalStorage)
 function getAccessToken() {
   return localStorage.getItem("access_token"); // login.js랑 맞춤
@@ -65,7 +67,7 @@ function requireLogin(callback) {
 }
 
 // CSS 로드
-loadCSS("../../components/layout.css");
+loadCSS(`${BASE_PATH}/components/css/layout.css`);
 
 function loadCSS(url) {
   const link = document.createElement("link");
@@ -81,7 +83,7 @@ scheduleAutoLogout();
 
 async function loadLayout() {
   try {
-    const res = await fetch("../../components/layout.html");
+    const res = await fetch(`${BASE_PATH}/components/layout.html`);
     if (!res.ok) throw new Error("layout.html 로드 실패");
 
     const html = await res.text();
@@ -127,7 +129,7 @@ function bindHeaderEvents() {
     cartBtn.addEventListener(
       "click",
       requireLogin(() => {
-        window.location.href = "../web/pages/cart/cart.html";
+        window.location.href = `${BASE_PATH}/pages/cart/cart.html`;
       })
     );
   }
@@ -139,9 +141,9 @@ function bindHeaderEvents() {
   if (mypageBtn) {
     mypageBtn.addEventListener("click", () => {
       if (!isLoggedIn()) {
-        window.location.href = "../web/pages/login/login.html";
+        window.location.href = `${BASE_PATH}/pages/login/login.html`;
       } else {
-        window.location.href = "../web/404.html";
+        window.location.href = `${BASE_PATH}/404.html`;
       }
     });
   }
