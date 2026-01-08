@@ -65,7 +65,7 @@ function requireLogin(callback) {
 }
 
 // CSS 로드
-loadCSS("./components/layout.css");
+loadCSS("../../components/layout.css");
 
 function loadCSS(url) {
   const link = document.createElement("link");
@@ -81,7 +81,7 @@ scheduleAutoLogout();
 
 async function loadLayout() {
   try {
-    const res = await fetch("./components/layout.html");
+    const res = await fetch("../../components/layout.html");
     if (!res.ok) throw new Error("layout.html 로드 실패");
 
     const html = await res.text();
